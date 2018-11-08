@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dude, Where Are My Ethics?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link rel="shortcut icon" href="../static/img/favicon.png" />
+    <style type="text/css">
+      .game_container {
+        height: 75vh;
+        background-color: wheat;
+        padding: 2.5%;
+      }
+      .left_div{
+        width: 15%;
+        height: 100vh;
+        float: left;
+        background-color: #0D6AC7;
+      }
+      .mid_div {
+        padding-left: 5%;
+        padding-right: 5%;
+        width: 70%;
+        float: left;
+        background-color: white;
+      }
+      .right_div {
+        width: 15%;
+        height: 100vh;
+        float: left;
+        background-color: #0D6AC7;
+      } 
+      .game_div {
+        height: 100%;
+        width: 25%;
+        float: left;
+        background-color: gray;
+        position: relative;
+      } 
+      .prompt_divs {
+        width: 100%;
+        background-color: rgb(43, 36, 0);
+      } 
+    </style>
+  </head>
+  <body>
+    <div class="left_div">
+      <img src="../static/img/logo.png" style="float: left; width: 100%;">
+    </div>
+    <div class="mid_div">
+      <h1>Dude, Where Are My Ethics?</h1>
+      <div class="game_container">
+          <p>My string: {{my_string}}</p>
+          <p>Value from the list: {{my_list[3]}}</p>
+          <div class="prompt_divs">
+              {% for n in my_list %}
+              <div class="game_div">
+                <p style="text-align: center;">{{n}}</p>
+              </div>
+              {% endfor %}
+          </div> 
+          <div style="position: relative; bottom: 0;">
+              <p style="text-align: center; ">Innocent Niyibizi &copy; 2018</p>
+              <button style="position: absolute; right: 0; bottom: 0;">Next</button>
+          </div>
+      </div>
+    </div>
+    <div class="right_div">
+        <p style="color: white">Moral State: {{moral_state}}</p>
+    </div>
+
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  </body>
+</html>
