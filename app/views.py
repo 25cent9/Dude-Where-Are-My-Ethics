@@ -11,18 +11,22 @@ app.secret_key = 'dude-where-are-my-ethics'
 @app.route('/', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        new_player = Player(request.form['username'])
-        encoded = dumps(new_player)
-        print(encoded)
-        session['username'] = jsonify(new_player)
+        moral_states = ['MG', 'N', "MB"]
+        new_player = Player(request.form['username'], moral_state=choice(moral_states))
+        session['username'] = new_player.username
+        session['moral_state'] = new_player.moral_state
         return redirect('/game')
     return render_template('login.html')
 
     
-@app.route('/game')
+@app.route('/game', methods=['GET', 'POST'])
 def game():
-    moral_states = ['MG', 'N', "MB"]
-    moral_state_values = [100, 75, 50, 25]
     print(session)
-    return render_template('game.html', my_string="session['username']",
-            my_list=['The', 'quick', 'brown', 'fox'], moral_state=choice(moral_states))
+    if request.method == 'POST':
+        print("Button has been pressed")
+        return render_template('game.html', my_string=session['username'],
+            my_list=['The', 'quick', 'brown', 'fox'], moral_state=session["moral_state"])
+
+
+    return render_template('game.html', my_string=session['username'],
+            my_list=['The', 'quick', 'brown', 'fox'], moral_state=session["moral_state"])

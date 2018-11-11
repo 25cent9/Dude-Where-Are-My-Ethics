@@ -10,6 +10,7 @@
         height: 75vh;
         background-color: wheat;
         padding: 2.5%;
+        width: 100%;
       }
       .left_div{
         width: 15%;
@@ -38,8 +39,13 @@
         position: relative;
       } 
       .prompt_divs {
-        width: 100%;
+        width: 25%;
         background-color: rgb(43, 36, 0);
+        position: relative;
+        float: left;
+        display: flex; 
+        align-items: center; 
+        justify-content: center
       } 
     </style>
   </head>
@@ -50,20 +56,16 @@
     <div class="mid_div">
       <h1>Dude, Where Are My Ethics?</h1>
       <div class="game_container">
-          <p>My string: {{my_string}}</p>
-          <p>Value from the list: {{my_list[3]}}</p>
+        <p>My string: {{my_string}}</p>
+        <p>Value from the list: {{my_list[3]}}</p>
+          {% for n in my_list %}
           <div class="prompt_divs">
-              {% for n in my_list %}
-              <div class="game_div">
-                <p style="text-align: center;">{{n}}</p>
-              </div>
-              {% endfor %}
-          </div> 
-          <div style="position: relative; bottom: 0;">
-              <p style="text-align: center; ">Innocent Niyibizi &copy; 2018</p>
-              <button style="position: absolute; right: 0; bottom: 0;">Next</button>
+            <img src="../static/img/logo.png" style="width: 100%;"/>
+            <input type="submit" name="{{n}}" id="{{n}}" value="{{n}}" style="position: absolute; bottom: 0;">
           </div>
+          {% endfor %}
       </div>
+    <p style="bottom: 0; position: relative; text-align: center;">This is the close</p>
     </div>
     <div class="right_div">
         <p style="color: white">Moral State: {{moral_state}}</p>

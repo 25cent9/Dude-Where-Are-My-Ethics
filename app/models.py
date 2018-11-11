@@ -15,6 +15,3 @@ class Player(object):
             self.moral_state = self.NEUTRAL
         else:
             self.moral_state = self.MORALLY_BAD
-
-            
-    
