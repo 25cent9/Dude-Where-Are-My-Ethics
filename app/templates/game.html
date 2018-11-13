@@ -35,17 +35,14 @@
         height: 100%;
         width: 25%;
         float: left;
-        background-color: gray;
         position: relative;
       } 
       .prompt_divs {
         width: 25%;
-        background-color: rgb(43, 36, 0);
         position: relative;
         float: left;
-        display: flex; 
         align-items: center; 
-        justify-content: center
+        justify-content: center;
       } 
     </style>
   </head>
@@ -56,12 +53,16 @@
     <div class="mid_div">
       <h1>Dude, Where Are My Ethics?</h1>
       <div class="game_container">
-        <p>My string: {{my_string}}</p>
-        <p>Value from the list: {{my_list[3]}}</p>
-          {% for n in my_list %}
+        <h2>Month: {{month}}</h2>
+        <h2>Prompt: {{current_prompt}}</h2> 
+        <h3>What do you do?</h3>
+          {% for n in range(4) %}
           <div class="prompt_divs">
             <img src="../static/img/logo.png" style="width: 100%;"/>
-            <input type="submit" name="{{n}}" id="{{n}}" value="{{n}}" style="position: absolute; bottom: 0;">
+            <div style="display: flex; align-items: center; justify-content: center; padding: 5%">
+              <p style="position: relative; bottom: 0; text-align: center;">{{actions[n]}}</p>
+              <input type="submit" name="{{my_list[n]}}" id="{{my_list[n]}}" value="{{my_list[n]}}" style="position: absolute; bottom: 0; margin-top: 20%;">
+            </div>
           </div>
           {% endfor %}
       </div>
