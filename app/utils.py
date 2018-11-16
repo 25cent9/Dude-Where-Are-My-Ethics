@@ -3,12 +3,31 @@ SEVENTY = "75.png"
 FITY = "50.png"
 TWENTY_FIVE = "25.png"
 
+_MG = "MG"
+_MB = "MB"
+_N = "N"
+
 def read_prompts(prompt_number):
+    if prompt_number == 0:
+        prompt_number = 1
     prompt_text_file = open("app/static/prompts/prompt"+str(prompt_number)+"/text.txt")
     prompt_text_list = []
     for line in prompt_text_file:
         prompt_text_list.append(str(line))
     return prompt_text_list
+
+def find_moral_results(moral_score=25):
+    average_moral_score = int(moral_score/15)
+    print(average_moral_score)
+    average_moral_state = None
+    if average_moral_score >= 75:
+        average_moral_state = _MG
+    elif average_moral_score >= 50:
+        average_moral_state = _N
+    else:
+        average_moral_state = _MB
+    result_image = "../static/img/"+average_moral_state+".png"
+    return average_moral_score, average_moral_state, result_image
 
 
 def gather_images(prompt_number):
