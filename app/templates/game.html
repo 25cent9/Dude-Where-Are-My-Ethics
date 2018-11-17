@@ -8,7 +8,6 @@
     <style type="text/css">
       .game_container {
         height: 75vh;
-        /* background-color: wheat; */
         padding: 2.5%;
         width: 100%;
       }
@@ -24,7 +23,7 @@
         width: 57%;
         float: left;
         background-color: white;
-        height: 100vh;
+        height: 100%;
       }
       .right_div {
         width: 15%;
@@ -49,7 +48,7 @@
       } 
     </style>
   </head>
-  <body>
+  <body style="background-color: #0D6AC7;">
     <div class="left_div">
       <img src="../static/img/logo.png" style="float: left; width: 100%;">
     </div>
@@ -58,6 +57,7 @@
       <div class="game_container">
         <h2>Month: {{month}}</h2>
         <h2>Prompt: {{current_prompt}}</h2> 
+        <p>Disclaimer: {{disclaimer}}</p>
         <h3>What do you do?</h3>
           <form method="POST" action="/game">
             {% for n in range(4) %}

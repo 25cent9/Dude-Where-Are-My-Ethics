@@ -18,7 +18,6 @@ def read_prompts(prompt_number):
 
 def find_moral_results(moral_score=25):
     average_moral_score = int(moral_score/15)
-    print(average_moral_score)
     average_moral_state = None
     if average_moral_score >= 75:
         average_moral_state = _MG
@@ -27,6 +26,12 @@ def find_moral_results(moral_score=25):
     else:
         average_moral_state = _MB
     result_image = "../static/img/"+average_moral_state+".png"
+    if average_moral_state is _MB:
+        average_moral_state = "Morally Bad"
+    elif average_moral_state is _MG:
+        average_moral_state = "Morally Good"
+    else:
+        average_moral_state = "Neutral"
     return average_moral_score, average_moral_state, result_image
 
 

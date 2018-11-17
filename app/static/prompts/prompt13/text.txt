@@ -1,4 +1,5 @@
-You're going up for a promotion and your boss asks you if you are ready to be promoted. He already knows that your track record suggests that you are not ready. 
+You're going up for a promotion and your boss asks you if you are ready to be promoted.
+You both knows that your track record suggests that you are not ready. 
 "It has been a great year at this company and I trust your opinon, whatever it may be."
 "I'm as ready as I'll ever be."
 "Are you sure that you want me to be promoted?"

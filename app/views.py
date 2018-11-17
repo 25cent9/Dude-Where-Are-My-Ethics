@@ -12,13 +12,12 @@ MORAL_STATES = ['MG', 'N', "MB"]
 @app.route('/', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        session['username'] = request.form['username']
         session['moral_state'] = choice(MORAL_STATES)
         session['prompt_number'] = 0
         session['moral_score'] = 0
         session['end'] = False
         return redirect('/game')
-    return render_template('login.html')
+    return render_template('index.html')
 
     
 @app.route('/game', methods=['GET', 'POST'])
@@ -35,7 +34,8 @@ def game(start = False):
     current_month = session['prompt_number']
     prompts = read_prompts(current_month)
     images = gather_images(current_month)
-    actions = prompts[1:]
+    actions = prompts[2:]
+    disclaimer = prompts[1]
     if request.method == 'POST':
         elements = []
         for value in request.form:
@@ -43,6 +43,8 @@ def game(start = False):
         response = parse_image_location(elements[0])
         session['moral_score'] += int(response)
         return render_template('game.html', month=MONTHS[current_month%len(MONTHS)-1], 
-            prompt_number=session["prompt_number"], current_prompt=prompts[0], actions=actions, prompt_images=images, score=session['moral_score'])
+            prompt_number=session["prompt_number"], current_prompt=prompts[0], actions=actions, prompt_images=images, score=session['moral_score'], 
+            disclaimer=disclaimer)
     return render_template('game.html', month=MONTHS[current_month%len(MONTHS)-1], 
-        prompt_number=session["prompt_number"], current_prompt=prompts[0], actions=actions, prompt_images=images, score=session['moral_score'])
+        prompt_number=session["prompt_number"], current_prompt=prompts[0], actions=actions, prompt_images=images, score=session['moral_score'], 
+        disclaimer=disclaimer)
